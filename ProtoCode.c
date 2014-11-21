@@ -17,6 +17,7 @@
 
 //Note: Alex is dumb. You cannot put comments before the Declaration of Motor Independence >:|    ^^
 //Version 1.5.0 Remember to change versions after every revision Brandon
+//Never mind. Joseph found a pretty cool program called git that can (sort of) do it for you - Brandon
 #pragma platform(VEX)
 
 //Competition Control and Duration Settings
