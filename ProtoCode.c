@@ -122,15 +122,15 @@ void turnLeft(float time)
 }
 void turnLeft90()
 {
-	turnLeft(insert 90 degree turn time 90);
+	turnLeft(/*insert 90 degree turn time*/ 90);
 }
 void turnRight90()
 {
-	turnRight(insert 90 degree turn time 90);
+	turnRight(/*insert 90 degree turn time */90);
 }
 void juan80()
 {
-	turnRight(insert 180 degree turn time 180);
+	turnRight(/*insert 180 degree turn time*/ 180);
 }
 void manipulatorUp()
 {
@@ -230,12 +230,7 @@ void hookSet(float level)
 */
 void pre_auton()
 {
-  // Set bStopTasksBetweenModes to false if you want to keep user created tasks running between
-  // Autonomous and Tele-Op modes. You will need to manage all user created tasks if set to false.
-  bStopTasksBetweenModes = true;
-
-	// All activities that occur before the competition starts
-	// Example: clearing encoders, setting servo positions, ...
+	resetSensors();
 }
 
 task autonomous()
