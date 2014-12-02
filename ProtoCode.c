@@ -38,11 +38,13 @@ float hook2;
 float hook3;
 
 //Autonomous Functions
+//Resets all resetable sensors :P
 void resetSensors()
 {
 	nMotorEncoder[Back_Right] = 0;
 	nMotorEncoder[Back_Left] = 0;
 }
+//Makes the robot go forward
 void forward()
 {
 	motor[Back_Left] = 127;
@@ -50,6 +52,7 @@ void forward()
 	motor[Back_Right] = 75;
 	motor[Front_Right] = 75;
 }
+//Makes the robot base stop
 void stahp()
 {
 	motor[Back_Left] = 0;
@@ -57,6 +60,7 @@ void stahp()
 	motor[Back_Right] = 0;
 	motor[Front_Right] = 0;
 }
+//Makes the robot go forward until the asigned encoder value has been reached
 void forward(int distance)
 {
 	while (nMotorEncoder[Back_Right] < distance)
@@ -65,6 +69,7 @@ void forward(int distance)
 	}
 	stahp();
 }
+//Makes the robot go backwards
 void backward()
 {
 	motor[Back_Left] = -127;
@@ -72,6 +77,7 @@ void backward()
 	motor[Back_Right] = -127;
 	motor[Front_Right] = -127;
 }
+//Makes the robot go backwards until the asigned encoder value has been reached
 void backward(int distance)
 {
 	while (-nMotorEncoder[bL] > distance || nMotorEncoder[bR] > distance)
@@ -80,6 +86,7 @@ void backward(int distance)
 	}
 	stahp();
 }
+//Makes the robot turn right
 void turnRight()
 {
 	motor[Back_Left] = 127;
@@ -87,6 +94,7 @@ void turnRight()
 	motor[Back_Right] = -127;
 	motor[Front_Right] = -127;
 }
+//Makes the robot turn right until the asigned time has passed
 void turnRight(float time)
 {
 	motor[Back_Left] = 127;
@@ -99,6 +107,7 @@ void turnRight(float time)
 	motor[Back_Right] = 0;
 	motor[Front_Right] = 0;
 }
+//Makes the robot turn left
 void turnLeft()
 {
 	motor[Back_Left] = -127;
@@ -106,6 +115,7 @@ void turnLeft()
 	motor[Back_Right] = 127;
 	motor[Front_Right] = 127;
 }
+//Makes the robot turn left until the asigned time has passed
 void turnLeft(float time)
 {
 	motor[Back_Left] = -127;
@@ -118,18 +128,22 @@ void turnLeft(float time)
 	motor[Back_Right] = 0;
 	motor[Front_Right] = 0;
 }
+//Makes the robot turn left 90 degrees (Incomplete)
 void turnLeft90()
 {
 	turnLeft(/*insert 90 degree turn time*/ 90);
 }
+//Makes the robot turn right 90 degrees (Incomplete)
 void turnRight90()
 {
 	turnRight(/*insert 90 degree turn time */90);
 }
+//Makes the robot do a 180 to the right (Incomplete)
 void juan80()
 {
 	turnRight(/*insert 180 degree turn time*/ 180);
 }
+//Raises the manipulator
 void manipulatorUp()
 {
 	motor[M_BottomLeft] = 127;
@@ -137,6 +151,7 @@ void manipulatorUp()
 	motor[M_TopLeft] = 127;
 	motor[M_TopRight] = 127;
 }
+//Lowers the manipulator
 void manipulatorDown()
 {
 	motor[M_BottomLeft] = -127;
@@ -144,6 +159,7 @@ void manipulatorDown()
 	motor[M_TopLeft] = -127;
 	motor[M_TopRight] = -127;
 }
+//Stops the manipulator
 void manipulatorStahp()
 {
 	motor[M_BottomLeft] = 0;
@@ -151,6 +167,7 @@ void manipulatorStahp()
 	motor[M_TopLeft] = 0;
 	motor[M_TopRight] = 0;
 }
+//Sets the manipulator to the given level
 void manipulatorSet(float level)
 {
 	if (SensorValue(manipulator) > level)
@@ -170,21 +187,25 @@ void manipulatorSet(float level)
 		manipulatorStahp();
 	}
 }
+//Intakes
 void hookUp(float hook)
 {
 	motor[TM_Left] = 127;
 	motor[TM_Right] = 127;
 }
+//Ejects
 void hookDown()
 {
 	motor[TM_Left] = -127;
 	motor[TM_Right] = -127;
 }
+//Stops the intake
 void hookStahp()
 {
 	motor[TM_Left] = 0;
 	motor[TM_Right] = 0;
 }
+//Sets the intake to the given level
 void hookSet(float level)
 {
 	if (SensorValue(hook) > level)
@@ -209,7 +230,7 @@ void hookSet(float level)
 	}
 
 }
-
+//Makes the robot "dance" (Incomplete and probably never to be completed
 /*void danceParty()
 {
 	forward(3);
@@ -233,6 +254,7 @@ void pre_auton()
 
 task autonomous()
 {
+	//Jeremy's Autonomous
 	motor[port2] = 127;
 	motor[port3] = 127;
 	motor[port4] = 127;
@@ -295,6 +317,7 @@ task autonomous()
 	motor[port4] = 0;
 	motor[port5] = 0;
 
+	//Brandon's Autonomous
 	/*resetSensors();
 	forward();
 	wait1Msec(300);
